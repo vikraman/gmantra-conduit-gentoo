@@ -10,4 +10,5 @@ RUN \
   echo 'Asia/Kolkata' > /etc/timezone && \
   eselect locale set en_US.utf8 && \
   emerge --sync && \
-  emerge -uDN @world
+  emerge -uDN @world && \
+  eselect python set python3.3
