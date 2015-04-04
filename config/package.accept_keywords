@@ -1,0 +1,5 @@
+app-admin/fleet ~amd64
+sys-fs/btrfs-progs ~amd64
+app-emulation/docker ~amd64
+dev-java/oracle-jdk-bin ~amd64
+net-misc/httpie ~amd64

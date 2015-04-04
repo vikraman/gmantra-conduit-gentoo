@@ -5,6 +5,9 @@ MAINTAINER HackCave
 # Initial configuration
 ADD config/make.conf /etc/portage/
 ADD config/gentoo.conf /etc/portage/repos.conf/
+ADD config/package.use /etc/portage/package.use/default
+ADD config/package.license /etc/portage/package.license/default
+ADD config/package.accept_keywords /etc/portage/package.accept_keywords/default
 
 RUN \
   echo 'Asia/Kolkata' > /etc/timezone && \
@@ -12,3 +15,25 @@ RUN \
   emerge --sync && \
   emerge -uDN @world && \
   eselect python set python3.3
+
+# docker, fleet
+RUN emerge app-emulation/docker app-admin/fleet
+
+# sass
+RUN emerge dev-ruby/sass
+
+# jdk
+RUN wget --no-check-certificate --header \
+  "Cookie: oraclelicense=accept-securebackup-cookie" \
+  https://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-x64.tar.gz \
+  -O /usr/portage/distfiles/jdk-8u40-linux-x64.tar.gz && \
+  chown portage:portage /usr/portage/distfiles/jdk-8u40-linux-x64.tar.gz && \
+  emerge dev-java/oracle-jdk-bin
+
+# sbt
+ADD https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt \
+  /usr/local/bin/
+RUN chmod a+rx /usr/local/bin/sbt
+
+# httpie
+emerge net-misc/httpie
