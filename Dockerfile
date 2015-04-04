@@ -36,4 +36,4 @@ ADD https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt \
 RUN chmod a+rx /usr/local/bin/sbt
 
 # httpie
-emerge net-misc/httpie
+RUN emerge net-misc/httpie
