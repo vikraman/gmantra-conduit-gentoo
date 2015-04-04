@@ -17,10 +17,10 @@ RUN \
   emerge -uDN @world
 
 # docker, fleet
-RUN emerge app-emulation/docker app-admin/fleet
-
-# sass
-RUN emerge dev-ruby/sass
+RUN \
+ emerge gentoo-sources && \
+ make -C /usr/src/linux defconfig && \
+ emerge app-emulation/docker app-admin/fleet
 
 # jdk
 RUN wget --no-check-certificate --header \
@@ -34,6 +34,9 @@ RUN wget --no-check-certificate --header \
 ADD https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt \
   /usr/local/bin/
 RUN chmod a+rx /usr/local/bin/sbt
+
+# sass
+RUN emerge dev-ruby/sass
 
 # httpie
 RUN emerge net-misc/httpie
