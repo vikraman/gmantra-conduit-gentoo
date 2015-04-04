@@ -23,7 +23,7 @@ RUN \
  emerge app-emulation/docker app-admin/fleet
 
 # jdk
-RUN wget --no-check-certificate --header \
+RUN wget --quiet --no-check-certificate --header \
   "Cookie: oraclelicense=accept-securebackup-cookie" \
   https://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-x64.tar.gz \
   -O /usr/portage/distfiles/jdk-8u40-linux-x64.tar.gz && \
