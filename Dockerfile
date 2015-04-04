@@ -12,9 +12,9 @@ ADD config/package.accept_keywords /etc/portage/package.accept_keywords/default
 RUN \
   echo 'Asia/Kolkata' > /etc/timezone && \
   eselect locale set en_US.utf8 && \
+  eselect python set python3.3 && \
   emerge --sync && \
-  emerge -uDN @world && \
-  eselect python set python3.3
+  emerge -uDN @world
 
 # docker, fleet
 RUN emerge app-emulation/docker app-admin/fleet
